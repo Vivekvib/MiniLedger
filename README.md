@@ -20,6 +20,12 @@ A small full-stack app for keeping track of money you lend to friends: who owes 
 - **API:** Node.js + Express 5 + TypeScript.
 - **Database:** PostgreSQL, accessed with raw parameterized SQL.
 
+## 🎥 Demo
+
+[![Watch the screen recording](https://img.shields.io/badge/▶_Watch_the_demo-Google_Drive-1F4D3F?style=for-the-badge&logo=googledrive&logoColor=white)](https://drive.google.com/drive/folders/12JEa66udY3TsVpIIEKxeN_3xWiAbQE8a?usp=sharing)
+
+A short screen recording of the app on a real Android phone: sign-in with OTP, adding a loan with a receipt photo, recording part payments, marking a loan repaid, and the summary totals.
+
 **New here and not technical?** Read [START-HERE.md](START-HERE.md): a step-by-step first-time guide with every command, written for someone who has never set up a project like this.
 
 Sign-in is a **mock one-time-code login**: the code is printed in the terminal where the API runs. It is never sent by SMS and never returned by the API. See [Security notes](#19-security-notes) and [Known limitations](#18-known-limitations).
