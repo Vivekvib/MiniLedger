@@ -1,0 +1,36 @@
+# Dependencies and build output
+node_modules/
+dist/
+build/
+coverage/
+web-build/
+
+# Secrets and local configuration (only the *.example files are committed)
+.env
+.env.*
+!.env.example
+
+# Logs and OS/editor files
+*.log
+npm-debug.log*
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Expo / React Native
+.expo/
+.metro-health-check*
+expo-env.d.ts
+android/
+ios/
+*.jks
+*.keystore
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.orig.*
+
+# TypeScript incremental build info
+*.tsbuildinfo

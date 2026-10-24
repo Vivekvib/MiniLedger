@@ -1,0 +1,42 @@
+{
+  "expo": {
+    "name": "MiniLedger",
+    "slug": "miniledger",
+    "scheme": "miniledger",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "plugins": [
+      "expo-router",
+      [
+        "expo-image-picker",
+        {
+          "cameraPermission": "MiniLedger uses the camera so you can take a photo of a receipt.",
+          "photosPermission": "MiniLedger lets you choose a receipt photo from your gallery."
+        }
+      ],
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#F6F2E9",
+          "image": "./assets/splash-icon.png",
+          "imageWidth": 240
+        }
+      ]
+    ],
+    "android": {
+      "package": "com.miniledger.app",
+      "adaptiveIcon": {
+        "backgroundColor": "#F6F2E9",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "predictiveBackGestureEnabled": false
+    },
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.miniledger.app"
+    }
+  }
+}

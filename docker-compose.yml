@@ -1,0 +1,33 @@
+# Local PostgreSQL for development and tests.
+#
+#   docker compose up -d      start (first start also creates miniledger_dev and miniledger_test)
+#   docker compose stop       stop, keeping your data
+#
+# The credentials below are LOCAL-ONLY and match backend/.env.example. The port is bound to
+# 127.0.0.1, so the database is not reachable from other machines on your network.
+#
+# `docker compose down -v` deletes the data volume and everything in it. It is deliberately
+# not part of the normal setup instructions.
+services:
+  db:
+    image: postgres:16
+    container_name: miniledger-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: miniledger
+      POSTGRES_PASSWORD: miniledger_local
+      POSTGRES_DB: miniledger_dev
+    ports:
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - miniledger-pgdata:/var/lib/postgresql/data
+      # Scripts here run once, when the data volume is first created.
+      - ./docker/initdb:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U miniledger -d miniledger_dev"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  miniledger-pgdata:
