@@ -24,7 +24,6 @@ A small full-stack app for keeping track of money you lend to friends: who owes 
 
 Sign-in is a **mock one-time-code login**: the code is printed in the terminal where the API runs. It is never sent by SMS and never returned by the API. See [Security notes](#19-security-notes) and [Known limitations](#18-known-limitations).
 
-> **Status in one paragraph.** The backend and the mobile app are both implemented, including the optional **receipt photo** feature. Backend: type-check, lint, build, migrations and 382 automated tests were run and pass. Mobile: type-check, lint, an Android bundle export and 335 tests (327 run by default, 8 opt-in live-API tests) were run and pass, and the mobile API client, including a receipt upload and download, was run against the real backend. The project owner ran sign-in, add-loan and mark-repaid on a real Android phone (USB + Expo Go) and confirmed they work; that was before receipts were added, so **the receipt camera and gallery flow has not been confirmed on a device**. [docs/testing.md](docs/testing.md) lists exactly what was and was not verified.
 
 ---
 
@@ -50,7 +49,6 @@ Sign-in is a **mock one-time-code login**: the code is printed in the terminal w
 18. [Known limitations](#18-known-limitations)
 19. [Security notes](#19-security-notes)
 20. [Receipt upload](#20-receipt-upload)
-21. [Git: publish this repository](#21-git-publish-this-repository)
 
 More detail: [architecture](docs/architecture.md) · [API](docs/api.md) · [database](docs/database.md) · [testing](docs/testing.md) · [troubleshooting](docs/troubleshooting.md).
 
@@ -586,19 +584,5 @@ Full request and response details: [docs/api.md](docs/api.md#receipts). Schema: 
 
 It stores photos in PostgreSQL, which suits an assignment and small data. At scale you would store files in object storage and keep a reference. See [Known limitations](#18-known-limitations).
 
-## 21. Git: publish this repository
-
-This project has **not** been pushed anywhere. To publish it yourself, from the repository root:
-
-```bash
-git init -b main
-git add .
-git status          # check: no .env files, no node_modules, no dist
-git commit -m "MiniLedger: loan tracker with Express API and Expo app"
-git remote add origin https://github.com/<your-username>/<your-repo>.git
-git push -u origin main
-```
-
-`git status` should list `backend/.env.example` and `mobile/.env.example` but **not** `backend/.env` or `mobile/.env`. If a real `.env` ever appears there, stop and fix `.gitignore` before committing.
 
 Verification commands to run from a clean checkout are in [docs/testing.md](docs/testing.md#how-to-reproduce-the-verification).
